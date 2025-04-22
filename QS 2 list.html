@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Курстар – Qarjy Sauaty</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #fce38a, #f38181, #95e1d3, #a8edea);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        header {
+            background: linear-gradient(to right, #f38181, #fce38a);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            text-shadow:
+                -1px -1px 0 #000,
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            padding: 40px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            width: 280px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #1a73e8;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        a.back {
+            display: inline-block;
+            margin-left: 40px;
+            margin-top: 10px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #1a73e8;
+        }
+
+        a.back:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Qarjy Sauaty – Курстар</h1>
+        <p>Қаржылық білімге алғашқы қадам жаса!</p>
+    </header>
+
+    <a class="back" href="index.html">← Басты бетке қайту</a>
+
+    <div class="container">
+        <div class="card">
+            <h3>💰 Бюджет құру негіздері</h3>
+            <p>Табысыңыз бен шығыныңызды дұрыс жоспарлау, қаржыңызды басқаруға арналған кеңестер.</p>
+            <a href="budget.html">→ Толық оқу</a>
+        </div>
+        <div class="card">
+            <h3>📊 Қарапайым инвестициялар</h3>
+            <p>Инвестицияның негізгі түрлерін түсініп, қаржыңызды өсіру жолдарын үйреніңіз.</p>
+            <a href="investments.html">→ Толық оқу</a>
+        </div>
+        <div class="card">
+            <h3>🏦 Банктік өнімдер</h3>
+            <p>Депозит, несие, кэшбэк сияқты банк қызметтерін дұрыс пайдалану жолдары.</p>
+            <a href="banking.html">→ Толық оқу</a>
+        </div>
+        <div class="card">
+            <h3>🛍️ Сатып алуды басқару</h3>
+            <p>Артық шығыннан арылып, ақшаны ақылмен жұмсау туралы кеңестер.</p>
+            <a href="spendings.html">→ Толық оқу</a>
+        </div>
+        <div class="card">
+            <h3>📈 Қаржы мақсаттары</h3>
+            <p>Ұзақ мерзімді қаржы мақсаттарын қою және оларға жету стратегиялары.</p>
+            <a href="goals.html">→ Толық оқу</a>
+        </div>
+    </div>
+
+</body>
+</html>

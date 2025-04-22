@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>Қаржылық сауаттылық тесті</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce38a, #f38181, #95e1d3, #a8edea);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      margin: 0;
+      padding: 0;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .quiz-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      text-shadow: 1px 1px 0 #fff;
+    }
+
+    #quiz {
+      max-width: 700px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #f38181;
+      border: none;
+      padding: 12px 25px;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e76f51;
+    }
+
+    #result {
+      margin-top: 30px;
+      font-size: 18px;
+      text-align: center;
+      max-width: 700px;
+      color: #333;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 15px;
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>Қаржылық сауаттылық тесті</h1>
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Жауаптарды жіберу</button>
+    <div id="result"></div>
+    <a class="back" href="index.html">← Басты бетке оралу</a>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "1. Бюджет дегеніміз не?",
+        answers: ["А) Ақша табу жолы", "B) Қаржы жоспары", "C) Несие алу құралы", "D) Инвестиция түрі"],
+        correct: "B"
+      },
+      {
+        question: "2. 50/30/20 ережесінде 20% қайда бөлінеді?",
+        answers: ["A) Қажеттіліктерге", "B) Қалауларға", "C) Қарыз төлеу не үнемдеуге", "D) Тамаққа"],
+        correct: "C"
+      },
+      {
+        question: "3. Қаржы мақсаттары не үшін қажет?",
+        answers: ["A) Көңіл көтеру үшін", "B) Ақша шашу үшін", "C) Болашаққа жоспар құру үшін", "D) Салық төлеу үшін"],
+        correct: "C"
+      },
+      {
+        question: "4. Депозит дегеніміз не?",
+        answers: ["A) Несие түрі", "B) Банкке салынған ақша", "C) Құнды қағаз", "D) Салық"],
+        correct: "B"
+      },
+      {
+        question: "5. Кэшбэк деген не?",
+        answers: ["A) Банкке төлем", "B) Ақша қайтару бонусы", "C) Ақша айырбастау", "D) Қарыз түрі"],
+        correct: "B"
+      },
+      {
+        question: "6. Жоспар құрудың ең маңызды қадамы?",
+        answers: ["A) Қарыз алу", "B) Күнде шопинг жасау", "C) Табысты және шығынды есептеу", "D) Тек табысқа сену"],
+        correct: "C"
+      },
+      {
+        question: "7. Инвестиция дегеніміз не?",
+        answers: ["A) Шығын", "B) Ақша жұмсау", "C) Ақшаны көбейту жолы", "D) Жалақы"],
+        correct: "C"
+      },
+      {
+        question: "8. Бюджетті кімдерге құру маңызды?",
+        answers: ["A) Тек кәсіпкерлерге", "B) Тек студенттерге", "C) Барлығына", "D) Банкирлерге"],
+        correct: "C"
+      },
+      {
+        question: "9. Қаржылық сауаттылық нені үйретеді?",
+        answers: ["A) Ақша шашуды", "B) Қаржыны тиімді басқаруды", "C) Тек табыс табуды", "D) Қарыз көбейтуді"],
+        correct: "B"
+      },
+      {
+        question: "10. Қарыз алған кезде не маңызды?",
+        answers: ["A) Мерзімі мен пайызы", "B) Ақша көлемі", "C) Қарыз беруші", "D) Мақсаты"],
+        correct: "A"
+      },
+      {
+        question: "11. Шығынды азайтудың бір жолы?",
+        answers: ["A) Қымбат заттар алу", "B) Жоспарсыз шопинг", "C) Артық зат алмау", "D) Көбірек жұмсау"],
+        correct: "C"
+      },
+      {
+        question: "12. Жинақ шот дегеніміз не?",
+        answers: ["A) Несие картасы", "B) Ақша сақтауға арналған банк шоты", "C) Шопинг картасы", "D) Ақша айырбастау орны"],
+        correct: "B"
+      },
+      {
+        question: "13. Қаржы мақсатын қою үшін не істеу керек?",
+        answers: ["A) Күнде ойлау", "B) Жазып, жоспарлау", "C) Жалақыны жұмсау", "D) Несие алу"],
+        correct: "B"
+      },
+      {
+        question: "14. Жалақыңыздың бір бөлігін жинауға не көмектеседі?",
+        answers: ["A) Күнде жұмсау", "B) Бюджет жоспары", "C) Шопинг", "D) Достармен тамақ ішу"],
+        correct: "B"
+      },
+      {
+        question: "15. Инфляция нені білдіреді?",
+        answers: ["A) Ақшаның құнсыздануы", "B) Ақша көбеюі", "C) Бюджет үлкеюі", "D) Қарыз азаюы"],
+        correct: "A"
+      },
+      {
+        question: "16. Қаржыны басқару не үшін керек?",
+        answers: ["A) Артық ақша жұмсау үшін", "B) Қиындыққа дайын болу үшін", "C) Ақша шашу үшін", "D) Үй алу үшін"],
+        correct: "B"
+      },
+      {
+        question: "17. Күнделікті шығындарды бақылау қалай жүзеге асады?",
+        answers: ["A) Есеп жүргізу арқылы", "B) Көбірек жұмсау арқылы", "C) Шопинг арқылы", "D) Несие алу арқылы"],
+        correct: "A"
+      },
+      {
+        question: "18. Қай кезде инвестиция тиімді?",
+        answers: ["A) Ақша болмаса", "B) Ақша артылғанда", "C) Жалақыны күтпей", "D) Туыстар айтқанда"],
+        correct: "B"
+      },
+      {
+        question: "19. Бюджеттің негізгі түрлері?",
+        answers: ["A) Табыстық, шығындық", "B) Ақшалық, сандық", "C) Банктік, несие", "D) Карталық, цифрлық"],
+        correct: "A"
+      },
+      {
+        question: "20. Қаржы ережелерін сақтау не береді?",
+        answers: ["A) Артық табыс", "B) Жинақ, тұрақтылық", "C) Ақша шашу", "D) Қарыз көбейту"],
+        correct: "B"
+      },
+    ];
+
+    function submitQuiz() {
+      const quizDiv = document.getElementById("quiz");
+      const resultDiv = document.getElementById("result");
+      const userAnswers = [];
+      let correctCount = 0;
+      const wrongAnswers = [];
+
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name=q${i}]:checked`);
+        if (selected) {
+          userAnswers.push(selected.value);
+          if (selected.value === q.correct) {
+            correctCount++;
+          } else {
+            wrongAnswers.push({ number: i + 1, question: q.question, correct: q.correct });
+          }
+        } else {
+          userAnswers.push(null);
+          wrongAnswers.push({ number: i + 1, question: q.question, correct: q.correct });
+        }
+      });
+
+      let resultHTML = `<h2>Нәтиже: ${correctCount} / ${questions.length}</h2>`;
+      if (wrongAnswers.length > 0) {
+        resultHTML += "<h3>Қате жауаптар:</h3><ul>";
+        wrongAnswers.forEach(w => {
+          resultHTML += `<li>${w.number}-сұрақтың дұрыс жауабы: <strong>${w.correct}</strong></li>`;
+        });
+        resultHTML += "</ul>";
+      } else {
+        resultHTML += "<p>Керемет! Барлық сұрақтарға дұрыс жауап бердіңіз 🎉</p>";
+      }
+
+      resultDiv.innerHTML = resultHTML;
+    }
+
+    const quizContainer = document.getElementById("quiz");
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>${q.question}</strong></p>` +
+        q.answers.map((a, idx) => {
+          const letter = a.charAt(0);
+          return `<label><input type="radio" name="q${i}" value="${letter}"> ${a}</label><br>`;
+        }).join("");
+      quizContainer.appendChild(div);
+    });
+  </script>
+</body>
+</html>
